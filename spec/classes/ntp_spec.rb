@@ -249,18 +249,8 @@ describe 'ntp' do
         end
       end
 
-      describe "on osfamily Solaris and operatingsystemrelease 5.10" do
-        let(:facts) {{ :osfamily => 'Solaris', :operatingsystemrelease => '5.10' }}
-
-        it 'uses the NTP pool servers by default' do
-          should contain_file('/etc/inet/ntp.conf').with({
-            'content' => /server \d.pool.ntp.org/,
-          })
-        end
-      end
-
-      describe "on osfamily Solaris and operatingsystemrelease 5.11" do
-        let(:facts) {{ :osfamily => 'Solaris', :operatingsystemrelease => '5.11' }}
+      describe "on osfamily Solaris" do
+        let(:facts) {{ :osfamily => 'Solaris' }}
 
         it 'uses the NTP pool servers by default' do
           should contain_file('/etc/inet/ntp.conf').with({
